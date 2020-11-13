@@ -1,7 +1,7 @@
 ### cc-builder
 Live compilation and linking tool for C/C++ projects written in Go.
 
-#### What this tool does?
+#### What the tool does?
 This tool compiles your C/C++ projects and also acts like a live-compiler that detects changes in your project and compiles the changes to keep the build upto date. The tool requires a simple configuration file that allows users to include custom compiler and linker flags. The tool only compiles the changed files incrementally and runs the linker to produce the fresh build, thus unmodified files are ignored from compiling again. You can add your own compiler support as well by modifying the source code.
 
 #### How it works?
