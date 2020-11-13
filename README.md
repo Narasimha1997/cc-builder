@@ -33,3 +33,8 @@ Parameters :
 5. `compiler` : The compiler to use, pass executable name. Ex : `gcc`, `g++` etc.
 6. `targetBinaryName` : Name of the final build along with platform specific extensions.
 
+Then you can run the tool as follows :
+```
+ccbuilder ./myconfig.json
+```
+The tool will then start and monitors your project to provide hot code reload functionality.
