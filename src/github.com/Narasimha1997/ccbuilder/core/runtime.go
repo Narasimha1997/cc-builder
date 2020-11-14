@@ -63,12 +63,23 @@ func onDirectoryCreate(fswatcher *FsWatchObject, path string, cm *CompilerMetada
 	})
 
 	handleFsError(&err, "Error adding "+path+" to watcher")
+
+	//call linker to link during directory change
+	cm.compiler.Link(&cm.configMap, cm.cacheHandler)
+
 	fmt.Printf("Total watchers %d\n", fswatcher.nCounter)
 }
 
 func onFileCreate(path string, cm *CompilerMetadata) {
 	fmt.Printf("Add %s detected.\n", path)
-	//cm.compiler.Compile()
+	path = filepath.Join(cm.rootPath, path)
+
+	result := cm.compiler.Compile(&path, &cm.configMap, cm.cacheHandler)
+
+	if result {
+		cm.compiler.Link(&cm.configMap, cm.cacheHandler)
+	}
+
 }
 
 func onFileChanged(path string, cm *CompilerMetadata) {
