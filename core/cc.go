@@ -124,7 +124,14 @@ func (cCompiler CCompiler) Link(config *ConfigData, cacheHandler CacheHandler) b
 	}
 
 	linkerArgs = append(linkerArgs, []string{"-o", outputPath}...)
-	linkerExec := exec.Command(config.Compiler, linkerArgs...)
+
+	var linkerExec *exec.Cmd
+
+	if config.CustomLinkerCommand != "" {
+		linkerExec = exec.Command(config.CustomLinkerCommand, linkerArgs...)
+	} else {
+		linkerExec = exec.Command(config.Compiler, linkerArgs...)
+	}
 
 	linkerExec.Stdout = os.Stdout
 	linkerExec.Stderr = os.Stderr

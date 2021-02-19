@@ -9,12 +9,13 @@ import (
 
 //ConfigData Configuration json structure
 type ConfigData struct {
-	SourceDir        string   `json:"sourceDir"`
-	TargetSuffixes   []string `json:"targetExts"`
-	Ccopts           string   `json:"ccopts"`
-	LinkOpts         string   `json:"linkerOpts"`
-	Compiler         string   `json:"compiler"`
-	TatgetBinaryName string   `json:"targetBinaryName"`
+	SourceDir           string   `json:"sourceDir"`
+	TargetSuffixes      []string `json:"targetExts"`
+	Ccopts              string   `json:"ccopts"`
+	LinkOpts            string   `json:"linkerOpts"`
+	Compiler            string   `json:"compiler"`
+	TatgetBinaryName    string   `json:"targetBinaryName"`
+	CustomLinkerCommand string   `json:"customLinkerCmd"`
 }
 
 func handleConfigError(err *error, message string) {
@@ -38,6 +39,8 @@ func LoadConfig(configFile string) *ConfigData {
 
 	err = json.Unmarshal([]byte(jsonData), &configOpts)
 	handleConfigError(&err, "Invalid config file "+configFile)
+
+	fmt.Printf("Loaded configuration : %v\n", configOpts)
 
 	return &configOpts
 }
