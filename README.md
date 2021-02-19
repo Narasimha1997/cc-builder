@@ -16,7 +16,7 @@ This tool compiles your C/C++ projects and also acts like a live-compiler that d
 ### Requirements:
 1. Linux Distribution
 2. Go programming language (latest version which supports go-modules)
-3. 
+3. Atleast one of the supported compiler toolchains.
 
 #### Running the tool
 The project requires a simple config json file as shown below :
