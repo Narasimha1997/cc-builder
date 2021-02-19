@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/Narasimha1997/cchelper/core"
+	"github.com/Narasimha1997/ccbuilder/core"
 )
 
 func main() {
